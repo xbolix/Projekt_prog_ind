@@ -42,6 +42,18 @@ export class DnsService {
     return newDnsQuery.save();
   }
 
+  public async getTheBiggestQueries(limit: number): Promise<DnsQuery[]> {
+    return this.dnsQueryModel.find(
+      { status: 'WITH_RESPONSE' },
+      {},
+      { sort: { responseSize: -1 }, limit },
+    );
+  }
+
+  public async getLastQueries(limit: number): Promise<DnsQuery[]> {
+    return this.dnsQueryModel.find({}, {}, { sort: { queryId: -1 }, limit });
+  }
+  
   private async handleDnsResponse(message: Buffer, rinfo: dgram.RemoteInfo) {
     const decodedMessage = dns.decode(message) as any;
 
