@@ -1,1 +1,1 @@
-export { DnsQueries } from "./DnsQueries";
+export { DnsQueryForm } from "./DnsQueryForm";
