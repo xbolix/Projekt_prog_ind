@@ -53,7 +53,7 @@ export class DnsService {
   public async getLastQueries(limit: number): Promise<DnsQuery[]> {
     return this.dnsQueryModel.find({}, {}, { sort: { queryId: -1 }, limit });
   }
-  
+
   private async handleDnsResponse(message: Buffer, rinfo: dgram.RemoteInfo) {
     const decodedMessage = dns.decode(message) as any;
 

@@ -15,7 +15,7 @@ export class DnsController {
   async getLastQueries(@Query('limit') limit: number) {
     return this.dnsService.getLastQueries(limit);
   }
-  
+
   @Post('execute-query')
   async executeQuery(@Body() dnsQueryDto: DnsQueryDto) {
     return this.dnsService.executeDnsQuery(dnsQueryDto);
